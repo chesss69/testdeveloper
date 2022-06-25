@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const persona_route_1 = __importDefault(require("./routes/persona.route"));
+const auth_route_1 = __importDefault(require("./routes/auth.route"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
+const swaggerOptions_1 = require("./swaggerOptions");
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use((0, cors_1.default)());
+app.use("/api/persona", persona_route_1.default);
+app.use("/api/auth", auth_route_1.default);
+const specs = (0, swagger_jsdoc_1.default)(swaggerOptions_1.options);
+app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs));
+exports.default = app;
