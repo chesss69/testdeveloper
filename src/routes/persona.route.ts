@@ -26,16 +26,21 @@ const router = express.Router();
  *              direccion:
  *                  type: string
  *                  description: direccion de la persona
+ *              fechanacimiento:
+ *                  type: string
+ *                  description: fecha de nacimiento de la persona
  *          required:
  *              - ci
  *              - nombrecompleto
  *              - email
  *              - direccion
+ *              - fechanacimiento
  *          example:
  *              ci: 12345678
  *              nombrecompleto: Juan Perez
  *              email: juanperez@gmail.component
  *              direccion: Av. Principal 123
+ *              fechanacimiento: 1997-01-01
  *  securitySchemes:
  *      bearerAuth:            
  *          type: http
